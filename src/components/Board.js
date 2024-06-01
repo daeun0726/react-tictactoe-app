@@ -4,9 +4,29 @@ import './Board.css'
 
 export default class Board extends Component {
 
-    renderSquare(i){
-        return <Square/>
+    constructor(props){
+        super(props);
+        this.state = {
+            squares: Array(9).fill(null),
+        };
+        //생성자를 추가하고 9개의 square에 해당하는 9개의 null 배열을 초기 state로 설정
     }
+
+    handleClick(i){
+        const squares = this.state.squares.slice(); //squares 배열 얉은 복사 얉은 복사: 원본 데이터 변경 X 
+        squares[i] = 'X';
+        this.setState({squares:squares});
+      }
+    //각각의 square 컴포넌트 클릭 시 호출
+
+    renderSquare(i){
+        return (<Square 
+                value={this.state.squares[i]}
+                onClick={()=> this.handleClick(i)}
+            />
+        );
+    }
+    //각각의 square 컴포넌트에 props를 이용해서 board 컴포넌트의 state값, 함수 전달
 
     render() {
         return (
