@@ -1,19 +1,16 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './Square.css'
 
-export default class Square extends Component {
+const Square = ({onClick, value}) => {
 
-
-  render() {
-    return (
-      <button 
-        className='square' 
-        onClick={() => this.props.onClick()} //bored 컴포넌트에서 props로 전달받은 함수
-      >
-        {this.props.value}
-      </button>
-    );
-  }
+  return (
+    <button 
+      className='square' 
+      onClick={onClick} //bored 컴포넌트에서 props로 전달받은 함수
+    >
+      {value}
+    </button>
+  );
 }
 
-//rcc 단축어로 생성 가능
+export default Square
