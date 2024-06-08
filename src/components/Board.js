@@ -15,7 +15,6 @@ const Board = ({squares, onClick}) => {
 
     return (
         <div className='board-wrapper'>
-            <div className='status'></div>
             <div className='board-row'>
                 {renderSquare(0)}
                 {renderSquare(1)}

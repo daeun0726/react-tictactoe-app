@@ -14,7 +14,6 @@ function App() {
   const [xIsNext, setXIsNext] = useState(true);
   const [stepNumber, setStepNumber] = useState(0);
   //현재 몇 번째 스텝인지 알 수 있는 state 생성
-  const current = history[stepNumber];
 
   const calculateWinner = (squares) => {
     const Lines = [ //이길 수 있는 경우 전체 저장
@@ -50,7 +49,7 @@ const handleClick = (i) => {
   }
   newSquares[i] = xIsNext? 'X' : 'O';
   setHistory([...history, {squares: newSquares}]); //전개 연산자 사용
-  setXIsNext(current => !current);
+  setXIsNext(prev => !prev);
 
   setStepNumber(newHistory.length);
 }
@@ -66,7 +65,9 @@ const moves = history.map((step, move) => {
     </li>
   );
 });
+
 let status;
+const current = history[stepNumber];
 const winner = calculateWinner(current.squares);
 if(winner){
   status = 'Winner:'+ winner;
